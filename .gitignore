@@ -220,3 +220,4 @@ pip-log.txt
 .ntvs_analysis.dat
 
 .vs
+*.o

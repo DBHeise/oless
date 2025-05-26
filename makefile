@@ -12,7 +12,7 @@ SOURCE = \
 	oless/vbahelper.cpp \
 	oless/program.cpp
 
-OBJECT = $(SOURCE:.c=.o)
+OBJECT = $(SOURCE:.cpp=.o)
 
 # Rules
 all: $(EXECUTABLE)
