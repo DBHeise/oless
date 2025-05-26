@@ -19,9 +19,7 @@ jobs:
     name: Linux Build
     runs-on: ubuntu-latest    
     steps:
-    - uses: actions/checkout@v1
-      with:
-        submodules: true
+    - uses: actions/checkout@v4
     - name: Build
       run: |
         mkdir -p bin/linux
@@ -36,9 +34,7 @@ jobs:
     name: Windows Build
     runs-on: windows-latest    
     steps:
-    - uses: actions/checkout@v1
-      with:
-        submodules: true    
+    - uses: actions/checkout@v4
     - name: Build
       run: |
         ./build.ps1
@@ -91,7 +87,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifacts
-          pattern: *binaries.zip
+          pattern: "*binaries.zip"
           merge-multiple: true
       - name: Create a Release
         uses: softprops/action-gh-release@v2
