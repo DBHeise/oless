@@ -28,7 +28,7 @@ jobs:
     - name: Archive
       uses: actions/upload-artifact@v4
       with:
-        name: Linux-binaries.zip
+        name: Linux-binaries
         path: bin/linux
   build-windows:
     name: Windows Build
@@ -41,12 +41,12 @@ jobs:
     - name: Archive x86
       uses: actions/upload-artifact@v4
       with:
-        name: Windows-x86-binaries.zip
+        name: Windows-x86-binaries
         path: bin/windows/x86/Release    
     - name: Archive x64
       uses: actions/upload-artifact@v4
       with:
-        name: Windows-x64-binaries.zip
+        name: Windows-x64-binaries
         path: bin/windows/x64/Release
   version:
     runs-on: ubuntu-latest
@@ -89,14 +89,14 @@ jobs:
           path: artifacts
       - name: Prepare Artifacts for Release
         run: |
-          ls -ahkil artifacts
-      # - name: Create a Release
-      #   uses: softprops/action-gh-release@v2
-      #   with:
-      #     name: ${{ needs.version.outputs.newtag }}
-      #     tag_name: ${{ needs.version.outputs.newtag }}
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     make_latest: true
-      #     files:
-      #       artifacts/*
+          find *binaries -type d | xargs -I subdir -- 7z a subdir.zip subdir\*
+      - name: Create a Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ needs.version.outputs.newtag }}
+          tag_name: ${{ needs.version.outputs.newtag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          make_latest: true
+          files:
+            artifacts/*.zip
   
