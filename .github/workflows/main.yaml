@@ -89,6 +89,7 @@ jobs:
           path: artifacts
       - name: Prepare Artifacts for Release
         run: |
+          cd artifacts
           find *binaries -type d | xargs -I subdir -- 7z a subdir.zip subdir\*
       - name: Create a Release
         uses: softprops/action-gh-release@v2
