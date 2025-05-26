@@ -26,7 +26,7 @@ jobs:
         make clean
         make    
     - name: Archive
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: Linux-binaries.zip
         path: bin/linux
@@ -39,12 +39,12 @@ jobs:
       run: |
         ./build.ps1
     - name: Archive x86
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: Windows-x86-binaries.zip
         path: bin/windows/x86/Release    
     - name: Archive x64
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: Windows-x64-binaries.zip
         path: bin/windows/x64/Release
