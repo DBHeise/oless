@@ -97,5 +97,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           make_latest: true
           files:
-            artifacts/*binaries.zip
+            artifacts/*
   
